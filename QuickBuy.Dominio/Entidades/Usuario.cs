@@ -6,10 +6,10 @@ namespace QuickBuy.Dominio.Entidades
 {
     public class Usuario:Entidade{
         public int Id { get; set; }
-        public int Email { get; set; }
-        public int Senha { get; set; }
-        public int Nome { get; set; }
-        public int SobreNome { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
+        public string Nome { get; set; }
+        public string SobreNome { get; set; }
 
          /// <summary>
         /// Um usuário pode ter um ou mais pedidos
@@ -18,7 +18,11 @@ namespace QuickBuy.Dominio.Entidades
 
         public override void Validate()
         {
-            
+            if (string.IsNullOrEmpty(Email))
+                AdicionarCritica("[ERRO]: O Valor do CEP deve ser preenchido");
+
+            if (string.IsNullOrEmpty(Senha))
+                AdicionarCritica("[ERRO]: O Valor do CEP deve ser preenchido");
         }
     }
 
